@@ -1,5 +1,6 @@
 package avltree;
 
+import Exceptions.ExceptionIsEmpty;
 import Exceptions.ItemDuplicated;
 import Exceptions.ItemNoFound;
 
@@ -56,5 +57,29 @@ public class BSTree<E extends Comparable<E>> implements BinarySearchTree<E> {
         else if (cmp < 0) return search(node.left, data);
         else return search(node.right, data);
     }
+    
+    @Override
+    public void delete(E data) throws ExceptionIsEmpty {
+        if (root == null) throw new ExceptionIsEmpty();
+        root = delete(root, data);
+    }
 
+    private Node delete(Node node, E data) {
+        if (node == null) return null;
+        int cmp = data.compareTo(node.data);
+        if (cmp < 0) {
+            node.left = delete(node.left, data);
+        } else if (cmp > 0) {
+            node.right = delete(node.right, data);
+        } else {
+            // Nodo encontrado para borrar
+            if (node.left == null) return node.right;
+            if (node.right == null) return node.left;
+            // Nodo con dos hijos: encontrar sucesor mínimo
+            Node minNode = findMinNode(node.right);
+            node.data = minNode.data;
+            node.right = delete(node.right, minNode.data);
+        }
+        return node;
+    }
 }
