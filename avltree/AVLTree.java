@@ -51,7 +51,24 @@ public class AVLTree<E extends Comparable<E>> extends BSTree<E> {
                             break;
                     }
                 }
-            } else {  
+            } else {  // Insertar en el subárbol izquierdo
+                fat.left = insert(x, (NodeAVL) node.left);
+                if (this.height) {
+                    switch (fat.bf) {
+                        case 1:
+                            fat.bf = 0;
+                            this.height = false;
+                            break;
+                        case 0:
+                            fat.bf = -1;
+                            this.height = true;
+                            break;
+                        case -1:
+                            fat = balanceToRight(fat);
+                            this.height = false;
+                            break;
+                    }
+                }
             }
         }
         return fat;
