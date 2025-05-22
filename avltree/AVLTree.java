@@ -147,5 +147,10 @@ public class AVLTree<E extends Comparable<E>> extends BSTree<E> {
         return p;
     }
     
-
+    private NodeAVL rotateSR(NodeAVL node) {
+        NodeAVL p = (NodeAVL) node.left;
+        node.left = p.right;
+        p.right = node;
+        return p;
+    }
 }
