@@ -1,5 +1,6 @@
 package avltree;
 
+import Exceptions.ExceptionIsEmpty;
 import Exceptions.ItemDuplicated;
 
 public class AVLTree<E extends Comparable<E>> extends BSTree<E> {
@@ -165,4 +166,14 @@ public class AVLTree<E extends Comparable<E>> extends BSTree<E> {
             inOrder((NodeAVL) node.right);
         }
     }
+
+    @Override
+    public void delete(E data) throws ExceptionIsEmpty {
+        if (root == null) throw new ExceptionIsEmpty();
+        height = false;
+        root = delete((NodeAVL) root, data);
+    }
+
+    
+
 }
