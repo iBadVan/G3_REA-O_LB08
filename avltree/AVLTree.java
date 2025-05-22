@@ -225,11 +225,11 @@ public class AVLTree<E extends Comparable<E>> extends BSTree<E> {
                     node = rotateSL(node);
                     if (right.bf == 0) {
                         node.bf = -1;
-                        node.left.bf = 0;
+                        ((NodeAVL) node.left).bf = 0;  
                         height = false;
                     } else {
                         node.bf = 0;
-                        node.left.bf = 0;
+                        ((NodeAVL) node.left).bf = 0;
                     }
                 } else {
                     node = balanceToLeft(node);
@@ -254,11 +254,11 @@ public class AVLTree<E extends Comparable<E>> extends BSTree<E> {
                     node = rotateSR(node);
                     if (left.bf == 0) {
                         node.bf = 1;
-                        node.right.bf = 0;
+                        ((NodeAVL) node.left).bf = 0;
                         height = false;
                     } else {
                         node.bf = 0;
-                        node.right.bf = 0;
+                        ((NodeAVL) node.left).bf = 0;
                     }
                 } else {
                     node = balanceToRight(node);
