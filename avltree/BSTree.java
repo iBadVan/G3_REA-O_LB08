@@ -3,6 +3,7 @@ package avltree;
 import Exceptions.ExceptionIsEmpty;
 import Exceptions.ItemDuplicated;
 import Exceptions.ItemNoFound;
+import avltree.AVLTree.NodeAVL;
 
 public class BSTree<E extends Comparable<E>> implements BinarySearchTree<E> {
     protected class Node {
@@ -93,5 +94,18 @@ public class BSTree<E extends Comparable<E>> implements BinarySearchTree<E> {
     @Override
     public boolean isEmpty() {
         return root == null;
+    }
+
+    public void inOrder() {
+        inOrder((Node) root);
+        System.out.println();
+    }
+    
+    private void inOrder(Node node) {
+        if (node != null) {
+            inOrder((Node) node.left);
+            System.out.print(node.data + "(" + node.bf + ") ");
+            inOrder((Node) node.right);
+        }
     }
 }
