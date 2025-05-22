@@ -153,4 +153,16 @@ public class AVLTree<E extends Comparable<E>> extends BSTree<E> {
         p.right = node;
         return p;
     }
+    public void inOrder() {
+        inOrder((NodeAVL) root);
+        System.out.println();
+    }
+    
+    private void inOrder(NodeAVL node) {
+        if (node != null) {
+            inOrder((NodeAVL) node.left);
+            System.out.print(node.data + "(" + node.bf + ") ");
+            inOrder((NodeAVL) node.right);
+        }
+    }
 }
