@@ -303,4 +303,12 @@ public class AVLTree<E extends Comparable<E>> extends BSTree<E> {
         preOrder((NodeAVL) node.left);
         preOrder((NodeAVL) node.right);
     }
+    
+    public E getRootData() {
+        if (root != null) {
+            return root.data;
+        }
+        return null;
+    }
+    
 }
