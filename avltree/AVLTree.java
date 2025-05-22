@@ -296,4 +296,11 @@ public class AVLTree<E extends Comparable<E>> extends BSTree<E> {
         preOrder((NodeAVL) root);
         System.out.println();
     }
+    
+    private void preOrder(NodeAVL node) {
+        if (node == null) return;
+        System.out.print(node.data + "(" + node.bf + ") ");
+        preOrder((NodeAVL) node.left);
+        preOrder((NodeAVL) node.right);
+    }
 }
