@@ -3,7 +3,7 @@ package avltree;
 import Exceptions.ExceptionIsEmpty;
 import Exceptions.ItemDuplicated;
 import Exceptions.ItemNoFound;
-import avltree.AVLTree.NodeAVL;
+
 
 public class BSTree<E extends Comparable<E>> implements BinarySearchTree<E> {
     protected class Node {
