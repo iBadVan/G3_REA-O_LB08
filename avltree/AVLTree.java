@@ -1,5 +1,7 @@
 package avltree;
 
+import Exceptions.ItemDuplicated;
+
 public class AVLTree<E extends Comparable<E>> extends BSTree<E> {
     class NodeAVL extends Node {
         protected int bf;  
@@ -15,4 +17,10 @@ public class AVLTree<E extends Comparable<E>> extends BSTree<E> {
         }
     }
     private boolean height;
+
+    public void insert(E x) throws ItemDuplicated {
+        this.height = false;
+        this.root = insert(x, (NodeAVL) this.root);
+    }
+
 }
