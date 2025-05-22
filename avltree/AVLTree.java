@@ -9,5 +9,9 @@ public class AVLTree<E extends Comparable<E>> extends BSTree<E> {
             this.bf = 0; 
         }
 
+        @Override
+        public String toString() {
+            return data.toString() + "(" + bf + ")";
+        }
     }
 }
