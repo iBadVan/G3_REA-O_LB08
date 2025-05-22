@@ -284,4 +284,11 @@ public class AVLTree<E extends Comparable<E>> extends BSTree<E> {
         }
     }
 
+    public void bfs() {
+        int h = height();
+        for (int i = 0; i < h; i++) {
+            printLevel((NodeAVL) root, i);
+            System.out.println();
+        }
+    }
 }

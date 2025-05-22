@@ -9,12 +9,10 @@ public class TestAVLLevelOrder {
             avl.insert(50);
             avl.insert(30);
             avl.insert(70);
-            avl.insert(30); 
             avl.insert(40);
             avl.insert(60);
             avl.insert(80);
             avl.insert(35);
-            avl.insert(40); 
         } catch (ItemDuplicated e) {
             System.out.println("Error: elemento duplicado");
         }
