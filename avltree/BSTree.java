@@ -65,7 +65,7 @@ public class BSTree<E extends Comparable<E>> implements BinarySearchTree<E> {
         root = delete(root, data);
     }
 
-    private Node delete(Node node, E data) {
+    protected Node delete(Node node, E data) {
         if (node == null) return null;
         int cmp = data.compareTo(node.data);
         if (cmp < 0) {
@@ -84,7 +84,7 @@ public class BSTree<E extends Comparable<E>> implements BinarySearchTree<E> {
         return node;
     }
 
-    private Node findMinNode(Node node) {
+    protected Node findMinNode(Node node) {
         while (node.left != null) {
             node = node.left;
         }

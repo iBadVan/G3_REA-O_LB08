@@ -199,7 +199,7 @@ public class AVLTree<E extends Comparable<E>> extends BSTree<E> {
                 return (NodeAVL) node.left;
             } else {
                 // Nodo con dos hijos: buscar sucesor mínimo
-                NodeAVL minNode = findMinNode((NodeAVL) node.right);
+                NodeAVL minNode = (NodeAVL) findMinNode(node.right);
                 node.data = minNode.data;
                 node.right = delete((NodeAVL) node.right, minNode.data);
                 if (height) {
