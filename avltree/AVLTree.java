@@ -174,6 +174,40 @@ public class AVLTree<E extends Comparable<E>> extends BSTree<E> {
         root = delete((NodeAVL) root, data);
     }
 
+    private NodeAVL delete(NodeAVL node, E data) {
+        if (node == null) return null;
     
+        int cmp = data.compareTo(node.data);
+    
+        if (cmp < 0) {
+            node.left = delete((NodeAVL) node.left, data);
+            if (height) {
+                node = balanceAfterDeleteRight(node);
+            }
+        } else if (cmp > 0) {
+            node.right = delete((NodeAVL) node.right, data);
+            if (height) {
+                node = balanceAfterDeleteLeft(node);
+            }
+        } else {
+            // Nodo encontrado
+            if (node.left == null) {
+                height = true;
+                return (NodeAVL) node.right;
+            } else if (node.right == null) {
+                height = true;
+                return (NodeAVL) node.left;
+            } else {
+                // Nodo con dos hijos: buscar sucesor mínimo
+                NodeAVL minNode = findMinNode((NodeAVL) node.right);
+                node.data = minNode.data;
+                node.right = delete((NodeAVL) node.right, minNode.data);
+                if (height) {
+                    node = balanceAfterDeleteLeft(node);
+                }
+            }
+        }
+        return node;
+    }
 
 }
