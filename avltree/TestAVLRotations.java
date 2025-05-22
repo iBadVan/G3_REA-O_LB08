@@ -43,5 +43,10 @@ public class TestAVLRotations {
         }
     }
 
-    
+    private static void printAndExplain(AVLTree<Integer> tree, String action) {
+        System.out.println(action);
+        tree.inOrder();
+        System.out.println("Raíz actual: " + tree.getRootData());
+        System.out.println("--------------------------------");
+    }
 }
