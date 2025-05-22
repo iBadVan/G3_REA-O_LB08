@@ -210,4 +210,32 @@ public class AVLTree<E extends Comparable<E>> extends BSTree<E> {
         return node;
     }
 
+    private NodeAVL balanceAfterDeleteLeft(NodeAVL node) {
+        switch (node.bf) {
+            case -1:
+                node.bf = 0;
+                break;
+            case 0:
+                node.bf = 1;
+                height = false;
+                break;
+            case 1:
+                NodeAVL right = (NodeAVL) node.right;
+                if (right.bf >= 0) {
+                    node = rotateSL(node);
+                    if (right.bf == 0) {
+                        node.bf = -1;
+                        node.left.bf = 0;
+                        height = false;
+                    } else {
+                        node.bf = 0;
+                        node.left.bf = 0;
+                    }
+                } else {
+                    node = balanceToLeft(node);
+                }
+                break;
+        }
+        return node;
+    }
 }
