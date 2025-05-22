@@ -1,6 +1,7 @@
 package avltree;
 
 import Exceptions.ItemDuplicated;
+import Exceptions.ItemNoFound;
 
 public class BSTree<E extends Comparable<E>> implements BinarySearchTree<E> {
     protected class Node {
@@ -40,4 +41,20 @@ public class BSTree<E extends Comparable<E>> implements BinarySearchTree<E> {
         }
         return node;
     }
+
+    @Override
+    public E search(E data) throws ItemNoFound {
+        Node node = search(root, data);
+        if (node == null) throw new ItemNoFound();
+        return node.data;
+    }
+
+    private Node search(Node node, E data) {
+        if (node == null) return null;
+        int cmp = data.compareTo(node.data);
+        if (cmp == 0) return node;
+        else if (cmp < 0) return search(node.left, data);
+        else return search(node.right, data);
+    }
+
 }
