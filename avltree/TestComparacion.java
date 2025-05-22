@@ -20,7 +20,6 @@ public class TestComparacion {
             avl.inOrder();
             System.out.println("Altura AVL: " + avl.height());
 
-            // Caso 2: inserción que provoca rotación en AVL
             BSTree<Integer> bst2 = new BSTree<>();
             AVLTree<Integer> avl2 = new AVLTree<>();
 

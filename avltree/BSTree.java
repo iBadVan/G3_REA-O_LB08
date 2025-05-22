@@ -97,15 +97,27 @@ public class BSTree<E extends Comparable<E>> implements BinarySearchTree<E> {
     }
 
     public void inOrder() {
-        inOrder((Node) root);
+        inOrder(root);
         System.out.println();
     }
     
     private void inOrder(Node node) {
         if (node != null) {
-            inOrder((Node) node.left);
-            System.out.print(node.data + "(" + node.bf + ") ");
-            inOrder((Node) node.right);
+            inOrder(node.left);
+            System.out.print(node.data + " ");
+            inOrder(node.right);
         }
     }
+    
+    public int height() {
+        return height(root);
+    }
+    
+    private int height(Node node) {
+        if (node == null) return 0;
+        int leftHeight = height(node.left);
+        int rightHeight = height(node.right);
+        return 1 + Math.max(leftHeight, rightHeight);
+    }
+    
 }
