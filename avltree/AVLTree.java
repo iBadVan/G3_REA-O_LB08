@@ -14,4 +14,5 @@ public class AVLTree<E extends Comparable<E>> extends BSTree<E> {
             return data.toString() + "(" + bf + ")";
         }
     }
+    private boolean height;
 }
